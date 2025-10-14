@@ -88,7 +88,7 @@ def extrair_dados_empresa(empresa):
     # Inicializando variável de armazenamento
     dados = {
         "Reclamações Respondidas": "N/A", "Voltariam a Fazer Negócio": "N/A",
-        "Índice de Solução": "N/A", "Nota do Consumidor": "N/A", "Nota Geral": "N/A"
+        "Índice de Solução": "N/A", "Nota do Consumidor": "N/A"
     }
 
     try:
@@ -124,9 +124,6 @@ def extrair_dados_empresa(empresa):
         dados["Reclamações Respondidas"] = extrair_valor_com_chave("Respondeu")
         dados["Voltariam a Fazer Negócio"] = extrair_valor_com_chave("voltariam a fazer negócio")
         dados["Índice de Solução"] = extrair_valor_com_chave("A empresa resolveu")
-
-        # --- CORREÇÃO APLICADA AQUI ---
-        # Especificamos que queremos a SEGUNDA tag <strong> encontrada na frase
         dados["Nota do Consumidor"] = extrair_valor_com_chave("nota média dos consumidores", is_percent=False, posicao=2)
 
         print(f"Dados de {empresa['Nome']} extraídos com sucesso.")
